@@ -36,3 +36,16 @@ jobs:
         run: docker build --tag ${{ secrets.USERNAME_HUB }}/$PROJECT_NAME:latest .
       - name: Docker push
         run: docker push ${{ secrets.USERNAME_HUB }}/$PROJECT_NAME:latest
+  deployment:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - uses: actions/checkout@v3
+      - name: Create SSH key file
+        run: |
+          mkdir ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 400 ~/.ssh/id_rsa
+      - name: Deploy to server
+        run: |
+          ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no -A ${{ secrets.BASTION_USER }}@${{ secrets.BASTION_HOST }} 'docker stop gateway; docker rm gateway; docker rmi muravevartem/samokatim-gateway; docker run -d --network backend --name gateway muravevartem/samokatim-gateway:latest'
