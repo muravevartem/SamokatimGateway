@@ -3,6 +3,6 @@ spring:
     gateway:
       routes:
         - id: monitoring
-          uri: monitoring-service:8080
+          uri: http://monitoring-service:8080
           predicates:
-            - Path=/api/v1/monitor/
+            - Host=monitoring.1218407-cu57808.tw1.ru
