@@ -15,3 +15,14 @@ spring:
           uri: http://monitoring-service:8080
           predicates:
             - Path=/v1/track
+      globalcors:
+        cors-configurations:
+          '[/**]':
+              allowedOrigins: "https://1218407-cu57808.tw1.ru"
+              allowedMethods:
+                - GET
+                - POST
+                - PUT
+                - OPTIONS
+                - PATCH
+                - DELETE
