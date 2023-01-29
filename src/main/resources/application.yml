@@ -4,6 +4,8 @@ server:
     key-store-password: password
     key-store-type: pkcs12
     key-password: password
+    enabled: true
+    key-alias: springboot
 spring:
   cloud:
     gateway:
