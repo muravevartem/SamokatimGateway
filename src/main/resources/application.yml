@@ -19,6 +19,7 @@ spring:
         cors-configurations:
           '[/**]':
               allowedOrigins: "https://1218407-cu57808.tw1.ru"
+              allowCredentials: true
               allowedMethods:
                 - GET
                 - POST
