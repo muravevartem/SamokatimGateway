@@ -18,10 +18,8 @@ spring:
       globalcors:
         cors-configurations:
           '[/**]':
-              allowedOrigins: "https://1218407-cu57808.tw1.ru"
+              allowedOrigins: "*"
               allowCredentials: true
-              allowedHeaders:
-                - *
               allowedMethods:
                 - GET
                 - POST
