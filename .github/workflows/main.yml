@@ -30,6 +30,8 @@ jobs:
         uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
         with:
           arguments: bootJar
+      - name: Keytool
+        run: keytool -import -noprompt -alias springboot -file http/cert.crt -keystore springboot.p12 -storepass password
       - name: Docker Hub login
         run: docker login --username ${{ secrets.USERNAME_HUB }} --password ${{ secrets.PASSWORD_HUB }}
       - name: Docker build
