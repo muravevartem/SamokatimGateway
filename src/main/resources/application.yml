@@ -1,11 +1,12 @@
 server:
   ssl:
-    key-store: springboot.p12
+    key-store: keystore.p12
     key-store-password: password
-    key-store-type: pkcs12
+    key-store-type: PKCS12
     key-password: password
     enabled: true
     key-alias: springboot
+    enabled-protocols: TLSv1.2
 spring:
   cloud:
     gateway:
@@ -14,6 +15,3 @@ spring:
           uri: http://monitoring-service:8080
           predicates:
             - Path=/v1/track
-      httpclient:
-        ssl:
-          use-insecure-trust-manager: true
