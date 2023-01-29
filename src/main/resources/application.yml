@@ -27,3 +27,6 @@ spring:
                 - OPTIONS
                 - PATCH
                 - DELETE
+logging:
+  level:
+    root: debug
