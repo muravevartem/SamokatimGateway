@@ -20,6 +20,7 @@ spring:
           '[/**]':
               allowedOrigins: "https://1218407-cu57808.tw1.ru"
               allowCredentials: true
+              allowedHeaders: *
               allowedMethods:
                 - GET
                 - POST
