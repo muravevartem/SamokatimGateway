@@ -50,4 +50,4 @@ jobs:
           chmod 400 ~/.ssh/id_rsa
       - name: Deploy to server
         run: |
-          ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no -A ${{ secrets.BASTION_USER }}@${{ secrets.BASTION_HOST }} 'docker stop gateway; docker rm gateway; docker rmi muravevartem/samokatim-gateway; docker run -d --network backend -p 8080:8080 --name gateway muravevartem/samokatim-gateway:latest'
+          ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no -A ${{ secrets.BASTION_USER }}@${{ secrets.BASTION_HOST }} 'docker-compose up --force-recreate -d gateway'
