@@ -14,11 +14,11 @@ spring:
         - id: monitoring
           uri: http://monitoring-service:8080
           predicates:
-            - Path=/v1/track
+            - Path=/v1/track/**
         - id: handbook
           uri: http://handbook-service:8080
           predicates:
-            - Path=/v1/handbook
+            - Path=/v1/handbook/**
       globalcors:
         cors-configurations:
           '[/**]':
