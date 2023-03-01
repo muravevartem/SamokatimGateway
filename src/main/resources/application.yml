@@ -11,6 +11,10 @@ spring:
   cloud:
     gateway:
       routes:
+        - id: keycloak
+          uri: http://keycloak:8180
+          predicates:
+            - Host=sso.**
         - id: monitoring
           uri: http://monitoring-service:8080
           predicates:
@@ -19,10 +23,6 @@ spring:
           uri: http://handbook-service:8080
           predicates:
             - Path=/v1/handbook/**
-        - id: keycloak
-          uri: http://keycloak:8180
-          predicates:
-            - Host=sso.**
       globalcors:
         cors-configurations:
           '[/**]':
